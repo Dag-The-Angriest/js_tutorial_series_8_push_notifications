@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="showToast(successMsg)">Success</button>
+        <button onclick="showToast(errorMsg)">Error</button>
+        <button onclick="showToast(invalidMsg)">Invalid</button>
+        
+    </div>
+
+    <div id="toastBox">
+
+    </div>
+    <script>
+        let toastBox = document.getElementById('toastBox');
+        let successMsg = '<i class="uil uil-check-circle"></i> Successfully submitted';
+        let errorMsg = '<i class="uil uil-times-circle"></i> Please fix the error';
+        let invalidMsg = '<i class="uil uil-exclamation-circle"></i> Invalid input, check again';
+
+        const showToast = (msg) => {
+            let toast = document.createElement('div');
+            toast.classList.add("toast");
+            toast.innerHTML = msg;
+            toastBox.appendChild(toast);
+
+            if (msg.includes('error')) {
+                toast.classList.add('error');
+            } else if(msg.includes('Invalid')) {
+                toast.classList.add('invalid')
+            }
+
+            setTimeout(() => {
+                toast.remove();
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
